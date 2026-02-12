@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pika Pika</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Lilita+One&display=swap"
+        rel="stylesheet">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="index.js" type="text/javascript" defer></script>
+    <link rel="icon" type="image/png" href="favicon-96.png">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎲 Pika Pika 🎲</h1>
+        <p class="subtitle">¿Quién será elegido hoy?</p>
+
+        <div class="input-section">
+            <div class="input-group">
+                <textarea id="studentInput" placeholder="nombre de elevos..."
+                    autocomplete="off"></textarea>
+                <button class="btn-add" onclick="addStudent()">añadir</button>
+            </div>
+
+            <div class="students-list" id="studentsList"></div>
+
+            <button class="btn-plouf" id="ploufBtn" onclick="startPlouf()" disabled>
+                Pika Pika !
+            </button>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <p class="empty-state">Añadir a los alumnos...</p>
+        </div>
+    </div>
+    <footer>
+        <p>
+            © 2026 Hecho con ❤️ por <a href="https://github.com/Devlaubin" target="_blank"
+                style="color: var(--primary); text-decoration: none; font-weight: 600;">Aubin</a>
+        </p>
+    </footer>
+</body>
+
+</html>
