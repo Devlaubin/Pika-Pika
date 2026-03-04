@@ -8,7 +8,38 @@ let students = [];
                 students = JSON.parse(saved);
                 renderStudents();
             }
+            // bouton ouvre la modale tant que l'utilisateur le souhaite
+            const btn = document.getElementById('openUpdateBtn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    showUpdateModal();
+                });
+            }
         });
+
+        // Afficher la modale des mises à jour
+        function showUpdateModal() {
+            const modal = document.getElementById('updateModal');
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        }
+
+        // Masquer la modale
+        function hideUpdateModal() {
+            const modal = document.getElementById('updateModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Fermer lorsque l'utilisateur clique sur la croix ou en dehors
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('close-btn') || e.target.id === 'updateModal') {
+                hideUpdateModal();
+            }
+        });
+
 
         // Sauvegarder les élèves dans le localStorage
         function saveStudents() {
@@ -73,7 +104,7 @@ let students = [];
             students.splice(index, 1);
             saveStudents();
             renderStudents();
-            Location.reload();
+            // la liste se rafraîchit automatiquement, pas besoin de reload
         }
 
         // Afficher les élèves

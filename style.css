@@ -2,12 +2,9 @@ footer {
     margin: 0;
     font-size: 14px;
     text-align: center;
-    padding: 20px 0;
-    background: var(--card-bg);
+    padding: 20px 20px 20px 20px;
+    background: var(--card-bg) transparent;
     color: var(--text-color);
-    margin-top: 20px;
-    margin-left: 500px;
-    margin-right: 500px;
     border-radius: 32px;
 }
 
@@ -51,6 +48,11 @@ h1 {
     background-clip: text;
     letter-spacing: 2px;
     animation: titleBounce 0.8s ease-out;
+    -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 }
 
 @keyframes titleBounce {
@@ -68,7 +70,7 @@ h1 {
 .subtitle {
     text-align: center;
     font-size: 1.2rem;
-    color: var(--primary);
+    color: var(--secondary);
     margin-bottom: 3rem;
     font-weight: 600;
 }
@@ -425,7 +427,7 @@ h1 {
     left: 50%;
     transform: translateX(-50%) translateY(-100px);
     background: var(--secondary);
-    color: white;
+    color: var(--primary);
     padding: 1rem 2rem;
     border-radius: 20px;
     font-weight: 600;
@@ -434,6 +436,31 @@ h1 {
     z-index: 1000;
     animation: slideDown 0.5s ease-out forwards, slideUp 0.5s ease-in 2.5s forwards;
     cursor: default;
+    border: 2px solid var(--primary);
+}
+
+/* bouton pour voir nouveautés */
+.btn-update {
+    background-color: var(--tertiary) transparent;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-top: 1rem;
+    border: 2px solid var(--primary);
+}
+.btn-update:hover {
+    transform: scale(1.05);
+}
+.btn-update:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-update:hover:not(:disabled) {
+    transform: scale(1.05);
 }
 
 @keyframes slideDown {
@@ -447,4 +474,50 @@ h1 {
         transform: translateX(-50%) translateY(-100px);
         opacity: 0;
     }
+}
+
+/* modal pour les nouvelles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: 10% auto;
+    padding: 2rem;
+    border: 2px solid var(--primary);
+    border-radius: 20px;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--tertiary);
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--primary);
+}
+
+#modalmajp {
+    color: var(--tertiary);
+    font-weight: 600;
+    background: var(--primary) transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--primary);
 }

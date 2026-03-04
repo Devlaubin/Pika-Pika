@@ -11,13 +11,38 @@
         rel="stylesheet">
     <link href="style.css" type="text/css" rel="stylesheet">
     <script src="index.js" type="text/javascript" defer></script>
-    <link rel="icon" type="image/png" href="favicon-96.png">
+    <link rel="icon" type="image/png" href="Images/favicon.png">
 </head>
 
 <body>
+    <!-- modal for news/updates -->
+    <div id="updateModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="updateTitle">
+        <div class="modal-content">
+            <span class="close-btn" aria-label="Fermer">&times;</span>
+            <h2 id="updateTitle">Mises à jour et informations</h2>
+            <br>
+            <p>Bienvenue sur <strong>Pika Pika</strong> ! Voici quelques nouveautés :</p>
+            <br>
+            <p id="modalmajp">ATTENTION : Le site est en version bêta, des bugs et des changements peuvent arriver, merci de votre compréhension</p>
+            <br>
+            <ul>
+                <li>Ajout d'une animation de sélection</li>
+                <li>Notification en cas de doublons</li>
+                <li>Interface responsive améliorée</li>
+                <li>Recharge de la page automatiques</li>
+                <li>Grand nombre de bug résolus</li>
+            </ul>
+            <br>
+            <p>Merci d'utiliser Pika Pika.</p>
+        </div>
+    </div>
+
     <div class="container">
         <h1>🎲 Pika Pika 🎲</h1>
         <p class="subtitle">¿Quién será elegido hoy?</p>
+        <!-- bouton pour afficher les infos de mise à jour -->
+        <div class="update-button-wrapper" style="text-align:center; margin-bottom:1rem;">
+        </div>
 
         <div class="input-section">
             <div class="input-group">
@@ -40,8 +65,9 @@
     <footer>
         <p>
             © 2026 Hecho con ❤️ por <a href="https://github.com/Devlaubin" target="_blank"
-                style="color: var(--primary); text-decoration: none; font-weight: 600;">Aubin</a>
+                style="color: var(--secondary); text-decoration: none; font-weight: 600;">Aubin</a>
         </p>
+        <button id="openUpdateBtn" class="btn-update">Nouveauté</button>
     </footer>
 </body>
 
