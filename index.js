@@ -107,14 +107,28 @@ let students = [];
             // la liste se rafraîchit automatiquement, pas besoin de reload
         }
 
+        // Vider complètement la liste
+        function clearStudents() {
+            if (!confirm('Effacer tous les élèves ?')) return;
+            students = [];
+            saveStudents();
+            renderStudents();
+            const resultSection = document.getElementById('resultSection');
+            if (resultSection) {
+                resultSection.innerHTML = '<p class="empty-state">Añadir a los alumnos...</p>';
+            }
+        }
+
         // Afficher les élèves
         function renderStudents() {
             const list = document.getElementById('studentsList');
-            const btn = document.getElementById('ploufBtn');
+            const ploufBtn = document.getElementById('ploufBtn');
+            const clearBtn = document.getElementById('clearBtn');
 
             if (students.length === 0) {
                 list.innerHTML = '';
-                btn.disabled = true;
+                if (ploufBtn) ploufBtn.disabled = true;
+                if (clearBtn) clearBtn.disabled = true;
                 return;
             }
 
@@ -125,7 +139,8 @@ let students = [];
                 </div>
             `).join('');
 
-            btn.disabled = false;
+            if (ploufBtn) ploufBtn.disabled = false;
+            if (clearBtn) clearBtn.disabled = false;
         }
 
         // Animation Plouf Plouf
@@ -133,45 +148,60 @@ let students = [];
             if (isAnimating || students.length === 0) return;
 
             isAnimating = true;
-            document.getElementById('ploufBtn').disabled = true;
+            const ploufBtn = document.getElementById('ploufBtn');
+            if (ploufBtn) ploufBtn.disabled = true;
+
+            // nettoyer un ancien highlight éventuel
+            document.querySelectorAll('.student-tag').forEach(tag => tag.classList.remove('highlight'));
 
             const resultSection = document.getElementById('resultSection');
-            resultSection.innerHTML = '<p class="winner-text loading">🎲</p>';
-
-            // Animation de sélection rapide
-            const cycles = 15;
-            const delay = 100;
-
-            for (let i = 0; i < cycles; i++) {
-                const randomIndex = Math.floor(Math.random() * students.length);
-                highlightStudent(randomIndex);
-                await sleep(delay + (i * 10)); // Ralentissement progressif
+            if (resultSection) {
+                resultSection.innerHTML = '<p class="winner-text loading">🎲</p>';
             }
 
-            // Sélection finale
-            const winnerIndex = Math.floor(Math.random() * students.length);
-            const winner = students[winnerIndex];
+            try {
+                // Animation de sélection rapide
+                const cycles = 15;
+                const delay = 100;
 
-            highlightStudent(winnerIndex);
-            await sleep(500);
+                for (let i = 0; i < cycles; i++) {
+                    const randomIndex = Math.floor(Math.random() * students.length);
+                    highlightStudent(randomIndex);
+                    await sleep(delay + (i * 10)); // Ralentissement progressif
+                }
 
-            // Afficher le gagnant
-            resultSection.innerHTML = `
-                <p class="winner-text">L'élève choisi est...</p>
-                <p class="winner-name">${winner}</p>
-            `;
+                // Sélection finale
+                const winnerIndex = Math.floor(Math.random() * students.length);
+                const winner = students[winnerIndex];
 
-            // je lance les confetie (prochine maj je pesne a faire une animation de confetie plus jolie) // suprimerpour l'instant pour eviter les bug de confetie
-            createConfetti();
+                highlightStudent(winnerIndex);
+                await sleep(500);
 
-            // Réinitialiser
-            setTimeout(() => {
-                document.querySelectorAll('.student-tag').forEach(tag => {
-                    tag.classList.remove('highlight');
-                });
-                document.getElementById('ploufBtn').disabled = false;
-                isAnimating = false;
-            }, 1000);
+                // Afficher le gagnant
+                if (resultSection) {
+                    resultSection.innerHTML = `
+                        <p class="winner-text">L'élève choisi est...</p>
+                        <p class="winner-name">${winner}</p>
+                    `;
+                }
+
+                // retirer le gagnant de la liste pour qu'il ne puisse plus être tiré au sort
+                students.splice(winnerIndex, 1);
+                saveStudents();
+                renderStudents();
+
+                // je lance les confetie (prochine maj je pesne a faire une animation de confetie plus jolie) // suprimerpour l'instant pour eviter les bug de confetie
+                createConfetti();
+            } finally {
+                // Réinitialiser l'état d'animation et le bouton (peu importe si une erreur est survenue)
+                setTimeout(() => {
+                    document.querySelectorAll('.student-tag').forEach(tag => {
+                        tag.classList.remove('highlight');
+                    });
+                    if (ploufBtn) ploufBtn.disabled = students.length === 0;
+                    isAnimating = false;
+                }, 1000);
+            }
         }
 
         // Surligner un élève

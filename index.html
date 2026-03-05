@@ -19,19 +19,24 @@
     <div id="updateModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="updateTitle">
         <div class="modal-content">
             <span class="close-btn" aria-label="Fermer">&times;</span>
+            <h1>Pika Pika v1.3</h1>
             <h2 id="updateTitle">Mises à jour et informations</h2>
+            <h4>Derniere mise a jour le 05/03/2026</h4>
             <br>
             <p>Bienvenue sur <strong>Pika Pika</strong> ! Voici quelques nouveautés :</p>
             <br>
-            <p id="modalmajp">ATTENTION : Le site est en version bêta, des bugs et des changements peuvent arriver, merci de votre compréhension</p>
+            <p id="modalmajp">ATTENTION : Le site est en version bêta, des bugs majeur et des changements peuvent arriver, merci de votre compréhension et de votre patience.</p>
             <br>
             <ul>
-                <li>Ajout d'une animation de sélection</li>
-                <li>Notification en cas de doublons</li>
+                <li>Rechargement de la page automatique</li>
+                <li>Grand nombre de bugs résolus</li>
+                <li>Bouton pour tout supprimer ajouter (avec alert)</li>
+                <li>Problemme de Traduction en espagole reglée</li>
                 <li>Interface responsive améliorée</li>
-                <li>Recharge de la page automatiques</li>
-                <li>Grand nombre de bug résolus</li>
             </ul>
+            <br>
+            <p id="modalmajp">N'hesiter pas a me partager les bug pour améliorer le site ! 
+                <br> pour me <a id="mailto" href="mailto:aubin.dev@proton.me">contacter</a></p>
             <br>
             <p>Merci d'utiliser Pika Pika.</p>
         </div>
@@ -46,7 +51,7 @@
 
         <div class="input-section">
             <div class="input-group">
-                <textarea id="studentInput" placeholder="nombre de elevos..."
+                <textarea id="studentInput" placeholder="Nombre de Alumnos..."
                     autocomplete="off"></textarea>
                 <button class="btn-add" onclick="addStudent()">añadir</button>
             </div>
@@ -55,6 +60,9 @@
 
             <button class="btn-plouf" id="ploufBtn" onclick="startPlouf()" disabled>
                 Pika Pika !
+            </button>
+            <button class="btn-clear" id="clearBtn" onclick="clearStudents()" disabled style="margin-top:0.5rem; background:#ff6868; color:white;">
+                Tout supprimer
             </button>
         </div>
 
@@ -67,7 +75,7 @@
             © 2026 Hecho con ❤️ por <a href="https://github.com/Devlaubin" target="_blank"
                 style="color: var(--secondary); text-decoration: none; font-weight: 600;">Aubin</a>
         </p>
-        <button id="openUpdateBtn" class="btn-update">Nouveauté</button>
+        <button id="openUpdateBtn" class="btn-update">MAJ et information</button>
     </footer>
 </body>
 

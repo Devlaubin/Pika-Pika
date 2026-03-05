@@ -73,6 +73,11 @@ h1 {
     color: var(--secondary);
     margin-bottom: 3rem;
     font-weight: 600;
+    -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 }
 
 .input-section {
@@ -144,7 +149,7 @@ button {
     font-family: 'Fredoka', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
-    cursor: crosshair;
+    cursor: pointer;
     transition: all 0.4s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -187,6 +192,27 @@ button:hover::before {
 .btn-add:active {
     transform: scale(0.9);
     transition: all 0.4s ease;
+}
+
+/* clear all button style */
+.btn-clear {
+    background-color: #ff6868;
+    color: white;
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    box-shadow: 0 10px 30px var(--shadow);
+    margin-top: 0.5rem;
+    transition: all 0.4s ease;
+}
+
+.btn-clear:hover {
+    transform: scale(1.05);
+}
+
+.btn-clear:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .btn-plouf {
@@ -280,7 +306,6 @@ button:hover::before {
 .btn-remove:hover {
     background: var(--primary);
     color: white;
-    transform: scale(0.8); transition: all 0.3s ease;
 }.student-tag { background: var(--card-bg); padding: 1rem 1.5rem; border-radius: 20px; display: flex; justify-content: space-between;align-items: center; border: 3px solid var(--tertiary); animation: slideIn 0.4s ease-out; transition: all 0.3s ease; }
 p,
 h1 {
@@ -520,4 +545,10 @@ h1 {
     padding: 0.5rem 1rem;
     border-radius: 10px;
     border: 2px solid var(--primary);
+}
+
+#mailto{
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
 }
