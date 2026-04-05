@@ -1,8 +1,8 @@
 /* ─── Variables ────────────────────────────────────────────────────────────── */
 :root {
-    --primary: #6b86ff;
+    --primary: #0b72d3b9;;
     --secondary: #ecce22;
-    --tertiary: #176d7c;
+    --tertiary: #17547c;
     --danger: #ff6868;
     --purple: #A78BFA;
     --card-bg: #ffffff;
@@ -23,7 +23,7 @@
 /* ─── Base ─────────────────────────────────────────────────────────────────── */
 body {
     font-family: 'Fredoka', sans-serif;
-    background: linear-gradient(135deg, #5a76ff 0%, #7b9bff 50%, #6b86ff 100%);
+    background: #0b72d3b9;
     min-height: 100vh;
     padding: 2rem 1rem 4rem;
     overflow-x: hidden;
@@ -110,7 +110,7 @@ textarea {
     flex: 1;
     padding: 1rem 1.4rem;
     border: 2.5px solid var(--secondary);
-    border-radius: 18px;
+    border-radius: 28px;
     font-family: 'Fredoka', sans-serif;
     font-size: 1.05rem;
     font-weight: 600;
@@ -162,7 +162,7 @@ textarea.input-error {
 button {
     padding: 1rem 2rem;
     border: none;
-    border-radius: 18px;
+    border-radius: 48px;
     font-family: 'Fredoka', sans-serif;
     font-size: 1.05rem;
     font-weight: 700;
@@ -190,11 +190,13 @@ button:disabled {
     color: white;
     align-self: flex-start;
     white-space: nowrap;
+    border: var(--primary) 2px solid;
 }
 
 .btn-add:hover:not(:disabled) {
     transform: scale(1.06);
-    box-shadow: 0 6px 20px var(--shadow);
+    border: #2D3748 2px solid;
+    background-color: #2d88ddb9;
 }
 
 .btn-add:active:not(:disabled) {
@@ -249,9 +251,10 @@ button:disabled {
     font-size: 1.5rem;
     box-shadow: 0 8px 28px var(--shadow-yellow);
     margin-top: 1.2rem;
-    border-radius: 22px;
+    border-radius: 48px;
     position: relative;
     overflow: hidden;
+    border: #ecce22 2px solid;
 }
 
 .btn-plouf::after {
@@ -265,6 +268,8 @@ button:disabled {
 .btn-plouf:hover:not(:disabled) {
     transform: scale(1.035) translateY(-2px);
     box-shadow: 0 14px 40px var(--shadow-yellow);
+    border: #2D3748 2px solid;
+    background-color: #ecce22af;
 }
 
 .btn-plouf:active:not(:disabled) {
@@ -670,12 +675,14 @@ footer a:hover {
     top: 0.8rem;
     right: 1rem;
     font-size: 1.8rem;
-    font-weight: 400;
+    font-weight: 4000;
+    height: 32px;
+    width: 32px;
     color: #aaa;
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0.1rem 0.4rem;
+    padding: 4px 4px;
     line-height: 1;
     text-transform: none;
     letter-spacing: 0;
@@ -685,8 +692,9 @@ footer a:hover {
 
 .close-btn:hover {
     color: var(--danger);
-    background: rgba(255, 104, 104, 0.1);
-    transform: scale(1.15);
+    background: rgba(255, 104, 104, 0.1) transparent;
+    border-radius: 30px;
+    transform: scale(1.45);
 }
 
 /* ─── Responsive ────────────────────────────────────────────────────────────── */

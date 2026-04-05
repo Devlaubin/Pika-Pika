@@ -125,7 +125,7 @@ function clearStudents() {
     renderStudents();
     const resultSection = document.getElementById('resultSection');
     if (resultSection) {
-        resultSection.innerHTML = '<p class="empty-state">✨ Añade alumnos para comenzar</p>';
+        resultSection.innerHTML = '<p class="empty-state">Añade alumnos para comenzar</p>';
     }
 }
 
