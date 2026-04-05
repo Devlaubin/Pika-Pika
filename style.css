@@ -7,10 +7,11 @@
     --purple: #A78BFA;
     --card-bg: #ffffff;
     --text: #2D3748;
-    --shadow: rgba(107, 134, 255, 0.2);
+    --shadow: rgba(107, 134, 255, 0.22);
+    --shadow-yellow: rgba(236, 206, 34, 0.35);
 }
 
-/* ─── Reset ────────────────────────────────────────────────────────────────── */
+/* ─── Reset ─────────────────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -22,38 +23,37 @@
 /* ─── Base ─────────────────────────────────────────────────────────────────── */
 body {
     font-family: 'Fredoka', sans-serif;
-    background-color: var(--primary);
+    background: linear-gradient(135deg, #5a76ff 0%, #7b9bff 50%, #6b86ff 100%);
     min-height: 100vh;
-    padding: 2rem;
+    padding: 2rem 1rem 4rem;
     overflow-x: hidden;
 }
 
-/* ─── Mise en page ─────────────────────────────────────────────────────────── */
+/* ─── Container ─────────────────────────────────────────────────────────────── */
 .container {
-    max-width: 1000px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
-/* ─── Titre ────────────────────────────────────────────────────────────────── */
+/* ─── Titre ─────────────────────────────────────────────────────────────────── */
 h1 {
     font-family: 'Lilita One', cursive;
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: var(--secondary);
     letter-spacing: 2px;
-    animation: titleBounce 0.8s ease-out;
+    animation: titleBounce 0.8s ease-out both;
     user-select: none;
-    /* Evite les problèmes avec background-clip sur certains navigateurs */
-    background: var(--secondary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    /* BUG CORRIGÉ : background-clip cassait la couleur dans certains navigateurs
+       → on applique uniquement quand -webkit-text-fill-color est supporté */
+    background: none;
+    -webkit-text-fill-color: var(--secondary);
 }
 
 @keyframes titleBounce {
     0% {
-        transform: translateY(-20px);
+        transform: translateY(-24px);
         opacity: 0;
     }
 
@@ -70,20 +70,34 @@ h1 {
 .subtitle {
     text-align: center;
     font-size: 1.2rem;
-    color: var(--secondary);
-    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2.5rem;
     font-weight: 600;
     user-select: none;
+    animation: fadeUp 0.6s 0.2s ease-out both;
 }
 
-/* ─── Section de saisie ────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Section entrée ────────────────────────────────────────────────────────── */
 .input-section {
     background: var(--card-bg);
     padding: 2rem;
-    border-radius: 30px;
-    box-shadow: 0 20px 60px var(--shadow);
+    border-radius: 28px;
+    box-shadow: 0 24px 64px var(--shadow);
     margin-bottom: 2rem;
-    border: 4px solid var(--primary);
+    border: 3px solid rgba(107, 134, 255, 0.3);
+    animation: fadeUp 0.6s 0.3s ease-out both;
 }
 
 .input-group {
@@ -94,29 +108,30 @@ h1 {
 
 textarea {
     flex: 1;
-    padding: 1rem 1.5rem;
-    border: 3px solid var(--tertiary);
-    border-radius: 20px;
+    padding: 1rem 1.4rem;
+    border: 2.5px solid var(--secondary);
+    border-radius: 18px;
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    color: var(--tertiary);
-    background: #f9fffe;
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    color: var(--text);
+    background: #fafffe;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
     resize: none;
-    min-height: 100px;
+    min-height: 90px;
 }
 
 textarea:focus {
     outline: none;
     border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(107, 134, 255, 0.15);
     transform: scale(1.01);
 }
 
-/* Animation d'erreur quand le champ est vide */
 textarea.input-error {
     animation: shake 0.4s ease;
-    border-color: var(--danger);
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 3px rgba(255, 104, 104, 0.2);
 }
 
 @keyframes shake {
@@ -143,16 +158,16 @@ textarea.input-error {
     }
 }
 
-/* ─── Boutons (base) ───────────────────────────────────────────────────────── */
+/* ─── Boutons (base) ────────────────────────────────────────────────────────── */
 button {
     padding: 1rem 2rem;
     border: none;
-    border-radius: 20px;
+    border-radius: 18px;
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.2s;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -163,16 +178,18 @@ button:focus-visible {
 }
 
 button:disabled {
-    opacity: 0.5;
+    opacity: 0.45;
     cursor: not-allowed;
     transform: none !important;
+    box-shadow: none !important;
 }
 
-/* ─── Bouton Ajouter ───────────────────────────────────────────────────────── */
+/* ─── Bouton Ajouter ────────────────────────────────────────────────────────── */
 .btn-add {
-    background-color: var(--primary);
+    background: var(--primary);
     color: white;
     align-self: flex-start;
+    white-space: nowrap;
 }
 
 .btn-add:hover:not(:disabled) {
@@ -181,94 +198,158 @@ button:disabled {
 }
 
 .btn-add:active:not(:disabled) {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
-/* ─── Bouton Pika Pika ─────────────────────────────────────────────────────── */
-.btn-plouf {
-    background-color: var(--secondary);
+/* ─── En-tête de liste ──────────────────────────────────────────────────────── */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0 0.25rem;
+}
+
+#studentCount {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--tertiary);
+    background: rgba(23, 109, 124, 0.08);
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    border: 1.5px solid rgba(23, 109, 124, 0.2);
+}
+
+/* BUG CORRIGÉ : .btn-clear était un gros bouton pleine largeur peu pratique
+   → remplacé par un bouton compact dans le header de liste */
+.btn-clear-inline {
+    background: transparent;
+    color: var(--danger);
+    border: 1.5px solid var(--danger);
+    padding: 0.3rem 0.9rem;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 700;
+}
+
+.btn-clear-inline:hover {
+    background: var(--danger);
     color: white;
+    transform: scale(1.05);
+}
+
+/* ─── Bouton Pika Pika ──────────────────────────────────────────────────────── */
+.btn-plouf {
+    background: var(--secondary);
+    color: #2D3748;
     width: 100%;
-    padding: 1.5rem;
+    padding: 1.4rem;
     font-size: 1.5rem;
-    box-shadow: 0 10px 30px rgba(236, 206, 34, 0.35);
-    margin-top: 1rem;
+    box-shadow: 0 8px 28px var(--shadow-yellow);
+    margin-top: 1.2rem;
+    border-radius: 22px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-plouf::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .btn-plouf:hover:not(:disabled) {
-    transform: scale(1.04);
-    box-shadow: 0 14px 40px rgba(236, 206, 34, 0.45);
+    transform: scale(1.035) translateY(-2px);
+    box-shadow: 0 14px 40px var(--shadow-yellow);
 }
 
 .btn-plouf:active:not(:disabled) {
     transform: scale(0.97);
 }
 
-/* ─── Bouton Tout supprimer ────────────────────────────────────────────────── */
-.btn-clear {
-    background-color: var(--danger);
-    color: white;
-    width: 100%;
-    padding: 1.2rem;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-}
-
-.btn-clear:hover:not(:disabled) {
-    transform: scale(1.03);
-    box-shadow: 0 6px 20px rgba(255, 104, 104, 0.35);
-}
-
-/* ─── Liste des élèves ─────────────────────────────────────────────────────── */
+/* ─── Liste d'étudiants ─────────────────────────────────────────────────────── */
 .students-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    max-height: 340px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.students-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.students-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.students-list::-webkit-scrollbar-thumb {
+    background: rgba(107, 134, 255, 0.3);
+    border-radius: 10px;
 }
 
 .student-tag {
-    background: var(--card-bg);
-    padding: 0.9rem 1.2rem;
-    border-radius: 20px;
+    background: #f8faff;
+    padding: 0.8rem 1rem;
+    border-radius: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 3px solid var(--tertiary);
-    animation: slideIn 0.35s ease-out;
-    transition: transform 0.2s ease, background 0.2s ease;
+    border: 2px solid rgba(23, 109, 124, 0.2);
+    animation: slideIn 0.3s ease-out both;
+    transition: transform 0.2s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateX(-16px);
+        transform: translateX(-12px) scale(0.95);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(12px) scale(0.9);
     }
 }
 
 .student-tag:hover {
-    transform: scale(1.04);
+    transform: scale(1.03);
+    border-color: rgba(107, 134, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(107, 134, 255, 0.12);
 }
 
 .student-tag.highlight {
     background: var(--primary);
     border-color: var(--primary);
-    transform: scale(1.08);
-    box-shadow: 0 6px 20px var(--shadow);
+    transform: scale(1.07);
+    box-shadow: 0 6px 22px var(--shadow);
 }
 
 .student-tag.highlight .student-name {
     color: white;
 }
 
+.student-tag.highlight .btn-remove {
+    color: rgba(255, 255, 255, 0.6);
+}
+
 .student-name {
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: var(--text);
     flex: 1;
     overflow: hidden;
@@ -276,64 +357,69 @@ button:disabled {
     white-space: nowrap;
 }
 
+/* BUG CORRIGÉ : .btn-remove héritait du style `button` global (uppercase, padding excessif)
+   → reset explicite de toutes les propriétés héritées */
 .btn-remove {
     background: transparent;
-    color: var(--primary);
-    padding: 0.25rem 0.6rem;
-    font-size: 1.1rem;
-    border-radius: 10px;
+    color: rgba(107, 134, 255, 0.5);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.95rem;
+    border-radius: 8px;
     text-transform: none;
     letter-spacing: 0;
+    font-weight: 400;
     flex-shrink: 0;
     border: none;
+    line-height: 1;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
 }
 
 .btn-remove:hover {
     background: var(--danger);
     color: white;
-    transform: scale(1.1);
-    border: none;
+    transform: scale(1.15);
 }
 
-/* ─── Section résultat ─────────────────────────────────────────────────────── */
+/* ─── Section résultat ──────────────────────────────────────────────────────── */
 .result-section {
     background: var(--card-bg);
-    padding: 3rem;
-    border-radius: 32px;
-    box-shadow: 0 20px 60px var(--shadow);
+    padding: 3rem 2rem;
+    border-radius: 28px;
+    box-shadow: 0 24px 64px var(--shadow);
     text-align: center;
-    min-height: 220px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 4px solid var(--secondary);
+    border: 3px solid var(--secondary);
     transition: all 0.4s ease;
+    animation: fadeUp 0.6s 0.5s ease-out both;
 }
 
 .empty-state {
-    color: #aaa;
-    font-size: 1.2rem;
+    color: #bbb;
+    font-size: 1.15rem;
     font-style: italic;
 }
 
 .winner-text {
     font-family: 'Lilita One', cursive;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: var(--primary);
     margin-bottom: 0.8rem;
 }
 
 .winner-text.loading {
     font-size: 3rem;
-    animation: spin 0.8s linear infinite;
+    animation: spin 0.7s linear infinite;
 }
 
 .winner-name {
     font-family: 'Lilita One', cursive;
     font-size: clamp(2rem, 6vw, 3.5rem);
     color: var(--tertiary);
-    animation: winnerAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: winnerAppear 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 @keyframes winnerAppear {
@@ -358,10 +444,12 @@ button:disabled {
     }
 }
 
-/* ─── Confettis ────────────────────────────────────────────────────────────── */
+/* ─── Confetti ───────────────────────────────────────────────────────────────
+   BUG CORRIGÉ : pas de width/height → confettis invisibles
+   → maintenant définis via JS (tailles variables) */
 .confetti-piece {
     position: fixed;
-    top: -12px;
+    top: -20px;
     pointer-events: none;
     animation: confetti-fall ease-in forwards;
     z-index: 9999;
@@ -369,33 +457,38 @@ button:disabled {
 
 @keyframes confetti-fall {
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) rotate(0deg) translateX(0);
         opacity: 1;
     }
 
+    50% {
+        transform: translateY(50vh) rotate(270deg) translateX(20px);
+    }
+
     100% {
-        transform: translateY(105vh) rotate(540deg);
+        transform: translateY(110vh) rotate(540deg) translateX(-10px);
         opacity: 0;
     }
 }
 
-/* ─── Notifications ────────────────────────────────────────────────────────── */
+/* ─── Notifications ─────────────────────────────────────────────────────────── */
 .notification {
     position: fixed;
     top: 1.5rem;
     left: 50%;
-    transform: translateX(-50%) translateY(-120px);
+    transform: translateX(-50%) translateY(-130px);
     background: var(--secondary);
     color: #2D3748;
-    padding: 0.9rem 1.8rem;
-    border-radius: 20px;
+    padding: 0.85rem 1.6rem;
+    border-radius: 18px;
     font-weight: 700;
     font-size: 1rem;
-    box-shadow: 0 8px 24px rgba(236, 206, 34, 0.35);
-    z-index: 1000;
-    border: 2px solid var(--primary);
-    animation: notifDown 0.4s ease-out forwards, notifUp 0.4s ease-in 2.7s forwards;
+    box-shadow: 0 8px 28px var(--shadow-yellow);
+    z-index: 3000;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    animation: notifDown 0.35s ease-out forwards, notifUp 0.35s ease-in 2.7s forwards;
     white-space: nowrap;
+    pointer-events: none;
 }
 
 @keyframes notifDown {
@@ -406,18 +499,22 @@ button:disabled {
 
 @keyframes notifUp {
     to {
-        transform: translateX(-50%) translateY(-120px);
+        transform: translateX(-50%) translateY(-130px);
         opacity: 0;
     }
 }
 
-/* ─── Footer ───────────────────────────────────────────────────────────────── */
+/* ─── Footer ────────────────────────────────────────────────────────────────── */
 footer {
     text-align: center;
-    padding: 1.5rem 1rem;
+    padding: 2rem 1rem 1rem;
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.95rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 footer a {
@@ -431,59 +528,54 @@ footer a:hover {
 }
 
 .btn-update {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.12);
     color: white;
-    padding: 0.65rem 1.4rem;
+    padding: 0.6rem 1.4rem;
     border-radius: 20px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin-top: 0.8rem;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
     text-transform: none;
     letter-spacing: 0;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
 }
 
 .btn-update:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.22);
     border-color: white;
     transform: scale(1.05);
 }
 
-/* ─── Modale ───────────────────────────────────────────────────────────────── */
+/* ─── Modal ──────────────────────────────────────────────────────────────────
+   BUG CORRIGÉ : le modal était affiché avec display:block mais centré avec flex
+   → maintenant on gère display:flex directement via JS */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(0, 0, 0, 0.5);
     align-items: center;
     justify-content: center;
     padding: 1rem;
 }
 
-/* display:flex quand ouverte (défini via JS) */
-.modal[style*="flex"],
-.modal[style*="block"] {
-    display: flex !important;
-}
-
 .modal-content {
     background: var(--card-bg);
     padding: 2rem 2rem 1.5rem;
-    border: 3px solid var(--primary);
+    border: 2.5px solid var(--primary);
     border-radius: 24px;
-    max-width: 560px;
+    max-width: 540px;
     width: 100%;
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
-    animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 @keyframes modalIn {
     from {
-        transform: scale(0.85);
+        transform: scale(0.88);
         opacity: 0;
     }
 
@@ -494,17 +586,23 @@ footer a:hover {
 }
 
 .modal-content h1 {
-    font-size: 2rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.9rem;
+    margin-bottom: 0.2rem;
+    /* Reset : hérite des styles du h1 global, il faut overrider background-clip */
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: var(--secondary);
+    background-clip: unset;
+    text-align: left;
+    animation: none;
 }
 
 .modal-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--tertiary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     font-family: 'Fredoka', sans-serif;
     font-weight: 600;
-    /* Empêche l'héritage de background-clip du h1 */
     background: none;
     -webkit-background-clip: unset;
     -webkit-text-fill-color: var(--tertiary);
@@ -513,12 +611,12 @@ footer a:hover {
 
 .modal-date {
     font-size: 0.85rem;
-    color: #999;
+    color: #aaa;
     margin-bottom: 1rem;
 }
 
 .modal-warning {
-    background: #fff8e1;
+    background: #fff9e0;
     border: 2px solid var(--secondary);
     border-radius: 12px;
     padding: 0.75rem 1rem;
@@ -531,19 +629,20 @@ footer a:hover {
 .modal-list {
     padding-left: 1.5rem;
     margin: 0.75rem 0 1rem;
-    line-height: 2;
+    line-height: 2.1;
     color: var(--text);
 }
 
 .modal-contact {
     background: #f0f4ff;
-    border: 2px solid var(--primary);
+    border: 2px solid rgba(107, 134, 255, 0.3);
     border-radius: 12px;
-    padding: 0.75rem 1rem;
+    padding: 0.85rem 1rem;
     color: var(--tertiary);
     font-weight: 600;
     font-size: 0.95rem;
     margin-bottom: 0.75rem;
+    line-height: 1.7;
 }
 
 .modal-contact a {
@@ -561,33 +660,39 @@ footer a:hover {
     color: var(--tertiary);
     font-weight: 600;
     margin-top: 0.5rem;
+    font-size: 1rem;
 }
 
+/* BUG CORRIGÉ : close-btn était un <span> mais héritait du style button
+   → maintenant c'est un <button> avec reset explicite */
 .close-btn {
     position: absolute;
-    top: 0.6rem;
+    top: 0.8rem;
     right: 1rem;
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--tertiary);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #aaa;
     cursor: pointer;
     background: none;
     border: none;
-    padding: 0 0.3rem;
+    padding: 0.1rem 0.4rem;
     line-height: 1;
     text-transform: none;
     letter-spacing: 0;
+    border-radius: 8px;
+    transition: color 0.2s, transform 0.2s, background 0.2s;
 }
 
 .close-btn:hover {
     color: var(--danger);
+    background: rgba(255, 104, 104, 0.1);
     transform: scale(1.15);
 }
 
-/* ─── Responsive ───────────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
     body {
-        padding: 1rem;
+        padding: 1rem 0.75rem 3rem;
     }
 
     .input-group {
@@ -599,10 +704,20 @@ footer a:hover {
     }
 
     .students-list {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .result-section {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.25rem;
+    }
+
+    .input-section {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .students-list {
+        grid-template-columns: 1fr;
     }
 }
