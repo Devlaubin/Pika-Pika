@@ -1,0 +1,89 @@
+import Image from "next/image";
+
+export default function Home() {
+  return (
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pika Pika</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Lilita+One&display=swap"
+        rel="stylesheet">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="index.js" type="text/javascript" defer></script>
+    <link rel="icon" type="image/png" href="Images/favicon.png">
+</head>
+
+<body>
+    <audio id="selectionMusic" preload="auto">
+        <source src="Pica Pica Pito Pito Gorgorito.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Modal -->
+    <div id="updateModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="updateTitle">
+        <div class="modal-content">
+            <button class="close-btn" aria-label="Cerrar">&times;</button>
+            <h1>Pika Pika v1.8</h1>
+            <h2 id="updateTitle">Actualizaciones e información</h2>
+            <p class="modal-date">Última actualización el 06/04/2026</p>
+            <ul class="modal-list">
+                <li>Recarga automática de la página</li>
+                <li>Muchos errores resueltos</li>
+                <li>Botón para borrar todo agregado (con alerta)</li>
+                <li>Problema de traducción al español solucionado</li>
+                <li>Interfaz responsive mejorada</li>
+                <li><strong>¡Nueva!</strong> Música durante la selección del estudiante</li>
+                <li><strong>¡Nueva!</strong> Contador de alumnos en tiempo real</li>
+                <li><strong>¡Nueva!</strong> Confeti mejorado y bugs corregidos<li></li>
+            </ul>
+            <div class="modal-contact">
+                ¡No dudes en compartirme los errores para mejorar el sitio!<br>
+                Para <a href="mailto:aubin.dev@proton.me">contactarme</a>
+            </div>
+            <p class="modal-thanks">Gracias por usar Pika Pika 🎉</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🎲 Pika Pika 🎲</h1>
+        <p class="subtitle">¿Quién será elegido hoy?</p>
+
+        <div class="input-section">
+            <div class="input-group">
+                <textarea id="studentInput" placeholder="Escribe un nombre o varios separados por coma..."
+                    autocomplete="off"></textarea>
+                <button class="btn-add" onclick="addStudent()">Añadir</button>
+            </div>
+
+            <div class="list-header" id="listHeader" style="display:none;">
+                <span id="studentCount">0 alumnos</span>
+                <button class="btn-clear-inline" onclick="clearStudents()">✕ Borrar todo</button>
+            </div>
+
+            <div class="students-list" id="studentsList"></div>
+
+            <button class="btn-plouf" id="ploufBtn" onclick="startPlouf()" disabled>
+                ¡Pika Pika!
+            </button>
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <p class="empty-state">Añade alumnos para comenzar</p>
+        </div>
+
+    </div>
+
+
+    <footer>
+        <div>
+            <p>
+            © 2026 Hecho con ❤️ por <a href="https://github.com/Devlaubin" target="_blank">Aubin</a>
+            </p>
+            <br>
+            <button id="openUpdateBtn" class="btn-update">Actualización e información</button>
+        </div>
+    </footer>
+  );
+}

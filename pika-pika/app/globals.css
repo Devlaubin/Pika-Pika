@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* ─── Variables ────────────────────────────────────────────────────────────── */
 :root {
     --primary: #0b72d3b9;;
@@ -692,7 +694,7 @@ footer a:hover {
 
 .close-btn:hover {
     color: var(--danger);
-    background: rgba(255, 104, 104, 0.1);
+    background: rgba(255, 104, 104, 0.1) transparent;
     border-radius: 30px;
     transform: scale(1.45);
 }
@@ -728,136 +730,4 @@ footer a:hover {
     .students-list {
         grid-template-columns: 1fr;
     }
-}
-/* ─── Barre de langue ────────────────────────────────────────────────────────── */
-.lang-bar {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 1000;
-}
-
-.lang-selector {
-    position: relative;
-    display: inline-block;
-}
-
-.lang-current {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: rgba(255, 255, 255, 0.18);
-    color: white;
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
-    padding: 0.45rem 0.9rem;
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: 'Fredoka', sans-serif;
-    letter-spacing: 0.5px;
-    text-transform: none;
-    /* Compatibilité Firefox : backdrop-filter avec fallback */
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-    background-clip: padding-box;
-    transition: background 0.2s, border-color 0.2s, transform 0.15s;
-}
-
-/* Fallback Firefox sans backdrop-filter */
-@supports not (backdrop-filter: blur(1px)) {
-    .lang-current {
-        background: rgba(11, 114, 211, 0.85);
-    }
-}
-
-.lang-current:hover {
-    background: rgba(255, 255, 255, 0.28);
-    border-color: white;
-    transform: scale(1.04);
-}
-
-.lang-flag {
-    font-size: 1rem;
-    line-height: 1;
-}
-
-.lang-code {
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-}
-
-.lang-arrow {
-    font-size: 0.7rem;
-    opacity: 0.8;
-    transition: transform 0.2s;
-}
-
-.lang-current[aria-expanded="true"] .lang-arrow {
-    transform: rotate(180deg);
-}
-
-/* Dropdown */
-.lang-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    right: 0;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
-    border: 2px solid rgba(107, 134, 255, 0.2);
-    overflow: hidden;
-    list-style: none;
-    padding: 0.4rem;
-    min-width: 150px;
-    /* Animation */
-    transform-origin: top right;
-    animation: none;
-}
-
-.lang-dropdown.open {
-    display: block;
-    animation: dropdownIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
-
-@keyframes dropdownIn {
-    from { opacity: 0; transform: scale(0.88) translateY(-8px); }
-    to   { opacity: 1; transform: scale(1)    translateY(0); }
-}
-
-.lang-option {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0.6rem 0.9rem;
-    border: none;
-    background: transparent;
-    color: #2D3748;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-transform: none;
-    letter-spacing: 0;
-    border-radius: 10px;
-    cursor: pointer;
-    gap: 0.5rem;
-    transition: background 0.15s;
-}
-
-.lang-option:hover {
-    background: #f0f4ff;
-    transform: none;
-}
-
-.lang-option.active {
-    background: rgba(107, 134, 255, 0.12);
-    color: var(--tertiary);
-}
-
-/* ─── Fix scrollbar Firefox ──────────────────────────────────────────────────── */
-/* Firefox supporte scrollbar-width/color depuis FF 64, pas les pseudo-éléments webkit */
-.students-list {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(107, 134, 255, 0.3) transparent;
 }
