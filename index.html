@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pika Pika</title>
+    <meta name="description" content="Application de selection aleatoire d'eleves - Pika Pika" />
+    <meta name="theme-color" content="#0b72d3" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,22 +18,84 @@
   </head>
 
   <body>
-    <audio id="selectionMusic" preload="auto">
+    <!-- Skip links for accessibility -->
+    <a href="#main-content" class="skip-link" data-i18n="skipToContent">Aller au contenu principal</a>
+    <a href="#studentInput" class="skip-link" data-i18n="skipToInput">Aller a la saisie</a>
+
+    <audio id="selectionMusic" preload="auto" aria-label="Musique de selection">
       <source src="Pica Pica Pito Pito Gorgorito.mp3" type="audio/mpeg" />
     </audio>
 
-    <!-- Sélecteur de langue -->
-    <div class="lang-bar">
+    <!-- Settings panel -->
+    <div class="settings-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="panel-content">
+        <button class="close-btn" aria-label="Fermer les parametres">&times;</button>
+        <h2 id="settingsTitle" data-i18n="settings.title">Parametres</h2>
+        <div class="settings-group">
+          <label class="settings-label">
+            <input type="checkbox" id="soundToggle" checked />
+            <span data-i18n="settings.sound">Sons</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">
+            <input type="checkbox" id="animToggle" checked />
+            <span data-i18n="settings.animations">Animations</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">
+            <input type="checkbox" id="confettiToggle" checked />
+            <span data-i18n="settings.confetti">Confettis</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">
+            <input type="checkbox" id="darkModeToggle" />
+            <span data-i18n="settings.darkMode">Mode sombre</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- History panel -->
+    <div class="history-panel" id="historyPanel" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+      <div class="panel-content">
+        <button class="close-btn" aria-label="Fermer l'historique">&times;</button>
+        <h2 id="historyTitle" data-i18n="history.title">Historique</h2>
+        <div class="history-stats" id="historyStats" aria-live="polite"></div>
+        <ul class="history-list" id="historyList" aria-label="Liste des selectionnes"></ul>
+        <button class="btn-clear-history" onclick="clearHistory()" data-i18n="history.clear">Effacer l'historique</button>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="toolbar" role="toolbar" aria-label="Outils">
+      <button class="toolbar-btn" id="settingsBtn" aria-label="Parametres" title="Parametres">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+      <button class="toolbar-btn" id="historyBtn" aria-label="Historique" title="Historique">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </button>
+
+      <!-- Language selector in toolbar -->
       <div class="lang-selector" id="langSelector">
         <button
-          class="lang-current"
+          class="toolbar-btn lang-current"
           id="langCurrent"
           aria-haspopup="true"
           aria-expanded="false"
+          aria-label="Selection de langue"
         >
           <span class="lang-flag" id="langFlag">🇫🇷</span>
           <span class="lang-code" id="langCode">FR</span>
-          <span class="lang-arrow">▾</span>
+          <span class="lang-arrow" aria-hidden="true">▾</span>
         </button>
         <ul class="lang-dropdown" id="langDropdown" role="menu">
           <li>
@@ -73,12 +137,12 @@
     >
       <div class="modal-content">
         <button class="close-btn" aria-label="Fermer">&times;</button>
-        <h1>Pika Pika v1.9</h1>
+        <h1>Pika Pika v2.0</h1>
         <h2 id="updateTitle" data-i18n="modal.title">
           Mises à jour et informations
         </h2>
         <p class="modal-date" data-i18n="modal.date">
-          Dernière mise à jour le 30/05/2026
+          Dernière mise à jour le 02/07/2026
         </p>
         <ul class="modal-list">
           <li data-i18n="modal.item1">Rechargement automatique de la page</li>
@@ -108,6 +172,18 @@
               >Sélection de langue + routing par URL</span
             >
           </li>
+          <li>
+            <strong data-i18n="modal.new">Nouveau !</strong>
+            <span data-i18n="modal.item10">Mode sombre + accessibilité améliorée</span>
+          </li>
+          <li>
+            <strong data-i18n="modal.new">Nouveau !</strong>
+            <span data-i18n="modal.item11">Historique des sélections</span>
+          </li>
+          <li>
+            <strong data-i18n="modal.new">Nouveau !</strong>
+            <span data-i18n="modal.item12">Panneau de paramètres</span>
+          </li>
         </ul>
         <div class="modal-contact" data-i18n="modal.contact">
           N'hésitez pas à me signaler les bugs pour améliorer le site !<br />
@@ -122,25 +198,30 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="main-content">
       <h1>🎲 Pika Pika 🎲</h1>
       <p class="subtitle" data-i18n="subtitle">Qui sera choisi aujourd'hui ?</p>
 
       <div class="input-section">
         <div class="input-group">
+          <label for="studentInput" class="sr-only" data-i18n="inputLabel">Noms des eleves</label>
           <textarea
             id="studentInput"
             data-i18n-placeholder="placeholder"
             placeholder="Écris un nom ou plusieurs séparés par une virgule..."
             autocomplete="off"
+            aria-describedby="inputHelp"
           ></textarea>
           <button class="btn-add" onclick="addStudent()" data-i18n="addBtn">
             Ajouter
           </button>
         </div>
+        <p id="inputHelp" class="input-help" data-i18n="inputHelp">
+          Appuie sur Ctrl+Entree ou Shift+Entree pour ajouter
+        </p>
 
         <div class="list-header" id="listHeader" style="display: none">
-          <span id="studentCount">0 élèves</span>
+          <span id="studentCount" aria-live="polite">0 élèves</span>
           <button
             class="btn-clear-inline"
             onclick="clearStudents()"
@@ -150,7 +231,7 @@
           </button>
         </div>
 
-        <div class="students-list" id="studentsList"></div>
+        <div class="students-list" id="studentsList" role="list" aria-label="Liste des eleves"></div>
 
         <button
           class="btn-plouf"
@@ -163,7 +244,7 @@
         </button>
       </div>
 
-      <div class="result-section" id="resultSection">
+      <div class="result-section" id="resultSection" aria-live="polite" aria-atomic="true">
         <p class="empty-state" data-i18n="emptyState">
           Ajoute des élèves pour commencer
         </p>
@@ -175,7 +256,7 @@
         <p>
           © 2026 <span data-i18n="footer.made">Fait avec</span> ❤️
           <span data-i18n="footer.by">par</span>
-          <a href="https://github.com/Devlaubin" target="_blank">Aubin</a>
+          <a href="https://github.com/Devlaubin" target="_blank" rel="noopener noreferrer">Aubin</a>
         </p>
         <br />
         <button

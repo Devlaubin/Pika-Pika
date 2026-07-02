@@ -7,19 +7,21 @@ const TRANSLATIONS = {
     htmlLang: "fr",
     subtitle: "Qui sera choisi aujourd'hui ?",
     placeholder: "Écris un nom ou plusieurs séparés par une virgule...",
+    inputLabel: "Noms des élèves",
+    inputHelp: "Appuie sur Ctrl+Entrée ou Shift+Entrée pour ajouter",
     addBtn: "Ajouter",
     clearBtn: "✕ Tout effacer",
     ploufBtn: "Pika Pika !",
     emptyState: "Ajoute des élèves pour commencer",
     studentSingular: "élève",
     studentPlural: "élèves",
-    notifAdded1: "¡Élève ajouté !",
+    notifAdded1: "Élève ajouté !",
     notifAddedN: (n) => `${n} élèves ajoutés !`,
     notifDup: (a, d) => `${a} ajouté(s) · ${d} doublon(s) ignoré(s)`,
     confirmClear: "Voulez-vous supprimer tous les élèves ?",
     winnerText: "L'élu(e) est... !",
     "modal.title": "Mises à jour et informations",
-    "modal.date": "Dernière mise à jour le 30/05/2026",
+    "modal.date": "Dernière mise à jour le 02/07/2026",
     "modal.item1": "Rechargement automatique de la page",
     "modal.item2": "Nombreux bugs résolus",
     "modal.item3": "Bouton de suppression totale ajouté (avec alerte)",
@@ -29,6 +31,9 @@ const TRANSLATIONS = {
     "modal.item7": "Compteur d'élèves en temps réel",
     "modal.item8": "Confettis améliorés et bugs corrigés",
     "modal.item9": "Sélection de langue + routing par URL",
+    "modal.item10": "Mode sombre + accessibilité améliorée",
+    "modal.item11": "Historique des sélections",
+    "modal.item12": "Panneau de paramètres",
     "modal.new": "Nouveau !",
     "modal.contact":
       "N'hésitez pas à me signaler les bugs pour améliorer le site !",
@@ -39,6 +44,17 @@ const TRANSLATIONS = {
     "footer.updateBtn": "Mise à jour et informations",
     closeAriaLabel: "Fermer",
     removeAriaLabel: (name) => `Supprimer ${name}`,
+    skipToContent: "Aller au contenu principal",
+    skipToInput: "Aller à la saisie",
+    "settings.title": "Paramètres",
+    "settings.sound": "Sons",
+    "settings.animations": "Animations",
+    "settings.confetti": "Confettis",
+    "settings.darkMode": "Mode sombre",
+    "history.title": "Historique",
+    "history.clear": "Effacer l'historique",
+    "history.empty": "Aucune sélection enregistrée",
+    "history.stats": (count) => `${count} élève${count !== 1 ? "s" : ""} sélectionné${count !== 1 ? "s" : ""}`,
   },
   en: {
     flag: "🇬🇧",
@@ -46,6 +62,8 @@ const TRANSLATIONS = {
     htmlLang: "en",
     subtitle: "Who will be chosen today?",
     placeholder: "Type a name or several separated by a comma...",
+    inputLabel: "Student names",
+    inputHelp: "Press Ctrl+Enter or Shift+Enter to add",
     addBtn: "Add",
     clearBtn: "✕ Clear all",
     ploufBtn: "Pika Pika!",
@@ -58,7 +76,7 @@ const TRANSLATIONS = {
     confirmClear: "Do you want to remove all students?",
     winnerText: "The chosen one is...!",
     "modal.title": "Updates & information",
-    "modal.date": "Last updated on 30/05/2026",
+    "modal.date": "Last updated on 02/07/2026",
     "modal.item1": "Automatic page reload",
     "modal.item2": "Many bugs fixed",
     "modal.item3": "Clear all button added (with confirmation)",
@@ -68,6 +86,9 @@ const TRANSLATIONS = {
     "modal.item7": "Real-time student counter",
     "modal.item8": "Improved confetti & bug fixes",
     "modal.item9": "Language selection + URL routing",
+    "modal.item10": "Dark mode + improved accessibility",
+    "modal.item11": "Selection history",
+    "modal.item12": "Settings panel",
     "modal.new": "New!",
     "modal.contact": "Feel free to report bugs to help improve the site!",
     "modal.contactLink": "contact me",
@@ -77,6 +98,17 @@ const TRANSLATIONS = {
     "footer.updateBtn": "Updates & information",
     closeAriaLabel: "Close",
     removeAriaLabel: (name) => `Remove ${name}`,
+    skipToContent: "Skip to main content",
+    skipToInput: "Skip to input",
+    "settings.title": "Settings",
+    "settings.sound": "Sounds",
+    "settings.animations": "Animations",
+    "settings.confetti": "Confetti",
+    "settings.darkMode": "Dark mode",
+    "history.title": "History",
+    "history.clear": "Clear history",
+    "history.empty": "No selections recorded",
+    "history.stats": (count) => `${count} student${count !== 1 ? "s" : ""} selected`,
   },
   es: {
     flag: "🇪🇸",
@@ -84,6 +116,8 @@ const TRANSLATIONS = {
     htmlLang: "es",
     subtitle: "¿Quién será elegido hoy?",
     placeholder: "Escribe un nombre o varios separados por coma...",
+    inputLabel: "Nombres de alumnos",
+    inputHelp: "Pulsa Ctrl+Enter o Shift+Enter para añadir",
     addBtn: "Añadir",
     clearBtn: "✕ Borrar todo",
     ploufBtn: "¡Pika Pika!",
@@ -96,7 +130,7 @@ const TRANSLATIONS = {
     confirmClear: "¿Deseas eliminar todos los estudiantes?",
     winnerText: "¡El elegido es...!",
     "modal.title": "Actualizaciones e información",
-    "modal.date": "Última actualización el 30/05/2026",
+    "modal.date": "Última actualización el 02/07/2026",
     "modal.item1": "Recarga automática de la página",
     "modal.item2": "Muchos errores resueltos",
     "modal.item3": "Botón para borrar todo agregado (con alerta)",
@@ -106,7 +140,10 @@ const TRANSLATIONS = {
     "modal.item7": "Contador de alumnos en tiempo real",
     "modal.item8": "Confeti mejorado y bugs corregidos",
     "modal.item9": "Selección de idioma + routing por URL",
-    "modal.new": "¡Nueva!",
+    "modal.item10": "Modo oscuro + accesibilidad mejorada",
+    "modal.item11": "Historial de selecciones",
+    "modal.item12": "Panel de configuración",
+    "modal.new": "¡Nuevo!",
     "modal.contact":
       "¡No dudes en compartirme los errores para mejorar el sitio!",
     "modal.contactLink": "contactarme",
@@ -116,6 +153,17 @@ const TRANSLATIONS = {
     "footer.updateBtn": "Actualización e información",
     closeAriaLabel: "Cerrar",
     removeAriaLabel: (name) => `Eliminar ${name}`,
+    skipToContent: "Ir al contenido principal",
+    skipToInput: "Ir a la entrada",
+    "settings.title": "Configuración",
+    "settings.sound": "Sonidos",
+    "settings.animations": "Animaciones",
+    "settings.confetti": "Confeti",
+    "settings.darkMode": "Modo oscuro",
+    "history.title": "Historial",
+    "history.clear": "Borrar historial",
+    "history.empty": "Sin selecciones registradas",
+    "history.stats": (count) => `${count} alumno${count !== 1 ? "s" : ""} seleccionado${count !== 1 ? "s" : ""}`,
   },
   de: {
     flag: "🇩🇪",
@@ -123,6 +171,8 @@ const TRANSLATIONS = {
     htmlLang: "de",
     subtitle: "Wer wird heute ausgewählt?",
     placeholder: "Gib einen oder mehrere durch Komma getrennte Namen ein...",
+    inputLabel: "Schülernamen",
+    inputHelp: "Drücke Strg+Enter oder Shift+Enter zum Hinzufügen",
     addBtn: "Hinzufügen",
     clearBtn: "✕ Alles löschen",
     ploufBtn: "Pika Pika!",
@@ -135,7 +185,7 @@ const TRANSLATIONS = {
     confirmClear: "Möchtest du alle Schüler entfernen?",
     winnerText: "Die/Der Auserwählte ist...!",
     "modal.title": "Updates & Informationen",
-    "modal.date": "Letzte Aktualisierung am 30.05.2026",
+    "modal.date": "Letzte Aktualisierung am 02.07.2026",
     "modal.item1": "Automatisches Neuladen der Seite",
     "modal.item2": "Viele Fehler behoben",
     "modal.item3": 'Schaltfläche „Alles löschen" hinzugefügt (mit Bestätigung)',
@@ -145,6 +195,9 @@ const TRANSLATIONS = {
     "modal.item7": "Echtzeit-Schülerzähler",
     "modal.item8": "Verbesserte Konfetti & Fehlerbehebungen",
     "modal.item9": "Sprachauswahl + URL-Routing",
+    "modal.item10": "Dunkelmodus + verbesserte Barrierefreiheit",
+    "modal.item11": "Auswahlverlauf",
+    "modal.item12": "Einstellungspanel",
     "modal.new": "Neu!",
     "modal.contact": "Melde gerne Fehler, um die Seite zu verbessern!",
     "modal.contactLink": "kontaktieren",
@@ -154,6 +207,17 @@ const TRANSLATIONS = {
     "footer.updateBtn": "Updates & Informationen",
     closeAriaLabel: "Schließen",
     removeAriaLabel: (name) => `${name} entfernen`,
+    skipToContent: "Zum Hauptinhalt springen",
+    skipToInput: "Zur Eingabe springen",
+    "settings.title": "Einstellungen",
+    "settings.sound": "Töne",
+    "settings.animations": "Animationen",
+    "settings.confetti": "Konfetti",
+    "settings.darkMode": "Dunkelmodus",
+    "history.title": "Verlauf",
+    "history.clear": "Verlauf löschen",
+    "history.empty": "Keine Auswahlen gespeichert",
+    "history.stats": (count) => `${count} Schüler ausgewählt`,
   },
   pt: {
     flag: "🇵🇹",
@@ -161,6 +225,8 @@ const TRANSLATIONS = {
     htmlLang: "pt",
     subtitle: "Quem será escolhido hoje?",
     placeholder: "Escreve um nome ou vários separados por vírgula...",
+    inputLabel: "Nomes dos alunos",
+    inputHelp: "Pressiona Ctrl+Enter ou Shift+Enter para adicionar",
     addBtn: "Adicionar",
     clearBtn: "✕ Limpar tudo",
     ploufBtn: "Pika Pika!",
@@ -173,7 +239,7 @@ const TRANSLATIONS = {
     confirmClear: "Deseja remover todos os alunos?",
     winnerText: "O escolhido é...!",
     "modal.title": "Atualizações e informações",
-    "modal.date": "Última atualização em 30/05/2026",
+    "modal.date": "Última atualização em 02/07/2026",
     "modal.item1": "Recarga automática da página",
     "modal.item2": "Muitos erros resolvidos",
     "modal.item3": "Botão para apagar tudo adicionado (com alerta)",
@@ -183,6 +249,9 @@ const TRANSLATIONS = {
     "modal.item7": "Contador de alunos em tempo real",
     "modal.item8": "Confetti melhorado e bugs corrigidos",
     "modal.item9": "Seleção de idioma + routing por URL",
+    "modal.item10": "Modo escuro + acessibilidade melhorada",
+    "modal.item11": "Histórico de seleções",
+    "modal.item12": "Painel de configurações",
     "modal.new": "Novo!",
     "modal.contact": "Não hesites em partilhar os erros para melhorar o site!",
     "modal.contactLink": "contactar",
@@ -192,6 +261,17 @@ const TRANSLATIONS = {
     "footer.updateBtn": "Atualização e informações",
     closeAriaLabel: "Fechar",
     removeAriaLabel: (name) => `Remover ${name}`,
+    skipToContent: "Ir para o conteúdo principal",
+    skipToInput: "Ir para a entrada",
+    "settings.title": "Configurações",
+    "settings.sound": "Sons",
+    "settings.animations": "Animações",
+    "settings.confetti": "Confetti",
+    "settings.darkMode": "Modo escuro",
+    "history.title": "Histórico",
+    "history.clear": "Limpar histórico",
+    "history.empty": "Sem seleções registadas",
+    "history.stats": (count) => `${count} aluno${count !== 1 ? "s" : ""} selecionado${count !== 1 ? "s" : ""}`,
   },
 };
 
@@ -203,10 +283,39 @@ const DEFAULT_LANG = "fr";
 let students = [];
 let isAnimating = false;
 let currentLang = DEFAULT_LANG;
+let history = [];
+
+// Settings
+let settings = {
+  sound: true,
+  animations: true,
+  confetti: true,
+  darkMode: false,
+};
 
 // ─── Initialisation ───────────────────────────────────────────────────────────
 
 window.addEventListener("DOMContentLoaded", () => {
+  // Load settings
+  loadSettings();
+  loadHistory();
+
+  // Check system preference for reduced motion
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    settings.animations = false;
+    document.body.classList.add("reduced-motion");
+  }
+
+  // Check system preference for dark mode
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches && !localStorage.getItem("pikaSettings")) {
+    settings.darkMode = true;
+  }
+
+  // Apply dark mode if needed
+  if (settings.darkMode) {
+    document.body.classList.add("dark-mode");
+  }
+
   // Déterminer la langue depuis l'URL
   const langFromUrl = getLangFromUrl();
   currentLang = langFromUrl || getLangFromBrowser() || DEFAULT_LANG;
@@ -226,21 +335,191 @@ window.addEventListener("DOMContentLoaded", () => {
     renderStudents();
   }
 
-  // Bouton modal
-  const btn = document.getElementById("openUpdateBtn");
-  if (btn) btn.addEventListener("click", showUpdateModal);
+  // Setup buttons
+  setupButtons();
 
-  // Fermer le modal
-  document.addEventListener("click", (e) => {
-    if (
-      e.target.classList.contains("close-btn") ||
-      e.target.id === "updateModal"
-    ) {
-      hideUpdateModal();
+  // Sélecteur de langue
+  setupLangSelector();
+
+  // Clic en dehors des panels
+  document.addEventListener("click", handleOutsideClick);
+
+  // Navigation navigateur
+  window.addEventListener("popstate", () => {
+    const lang = getLangFromUrl() || DEFAULT_LANG;
+    if (lang !== currentLang) {
+      currentLang = lang;
+      applyTranslations(currentLang);
     }
   });
 
-  // Ajouter avec Ctrl+Enter ou Shift+Enter
+  // Keyboard navigation
+  document.addEventListener("keydown", handleKeyDown);
+});
+
+// ─── Settings Management ─────────────────────────────────────────────────────
+
+function loadSettings() {
+  const saved = localStorage.getItem("pikaSettings");
+  if (saved) {
+    try {
+      settings = { ...settings, ...JSON.parse(saved) };
+    } catch (e) {}
+  }
+  updateSettingsUI();
+}
+
+function saveSettings() {
+  localStorage.setItem("pikaSettings", JSON.stringify(settings));
+}
+
+function updateSettingsUI() {
+  const soundToggle = document.getElementById("soundToggle");
+  const animToggle = document.getElementById("animToggle");
+  const confettiToggle = document.getElementById("confettiToggle");
+  const darkModeToggle = document.getElementById("darkModeToggle");
+
+  if (soundToggle) soundToggle.checked = settings.sound;
+  if (animToggle) animToggle.checked = settings.animations;
+  if (confettiToggle) confettiToggle.checked = settings.confetti;
+  if (darkModeToggle) darkModeToggle.checked = settings.darkMode;
+
+  // Update body classes
+  document.body.classList.toggle("reduced-motion", !settings.animations);
+  document.body.classList.toggle("dark-mode", settings.darkMode);
+}
+
+function setupSettingsListeners() {
+  const soundToggle = document.getElementById("soundToggle");
+  const animToggle = document.getElementById("animToggle");
+  const confettiToggle = document.getElementById("confettiToggle");
+  const darkModeToggle = document.getElementById("darkModeToggle");
+
+  if (soundToggle) {
+    soundToggle.addEventListener("change", (e) => {
+      settings.sound = e.target.checked;
+      saveSettings();
+    });
+  }
+
+  if (animToggle) {
+    animToggle.addEventListener("change", (e) => {
+      settings.animations = e.target.checked;
+      saveSettings();
+      document.body.classList.toggle("reduced-motion", !settings.animations);
+    });
+  }
+
+  if (confettiToggle) {
+    confettiToggle.addEventListener("change", (e) => {
+      settings.confetti = e.target.checked;
+      saveSettings();
+    });
+  }
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("change", (e) => {
+      settings.darkMode = e.target.checked;
+      saveSettings();
+      document.body.classList.toggle("dark-mode", settings.darkMode);
+    });
+  }
+}
+
+// ─── History Management ──────────────────────────────────────────────────────
+
+function loadHistory() {
+  const saved = localStorage.getItem("pikaHistory");
+  if (saved) {
+    try {
+      history = JSON.parse(saved);
+    } catch (e) {
+      history = [];
+    }
+  }
+}
+
+function saveHistory() {
+  localStorage.setItem("pikaHistory", JSON.stringify(history));
+}
+
+function addToHistory(name) {
+  history.unshift({
+    name,
+    date: new Date().toISOString(),
+  });
+  // Keep only last 50 entries
+  if (history.length > 50) {
+    history = history.slice(0, 50);
+  }
+  saveHistory();
+}
+
+function clearHistory() {
+  const t = TRANSLATIONS[currentLang];
+  if (!confirm(t.confirmClear)) return;
+  history = [];
+  saveHistory();
+  renderHistory();
+}
+
+function renderHistory() {
+  const list = document.getElementById("historyList");
+  const stats = document.getElementById("historyStats");
+  const t = TRANSLATIONS[currentLang];
+
+  if (!list || !stats) return;
+
+  stats.textContent = typeof t["history.stats"] === "function"
+    ? t["history.stats"](history.length)
+    : `${history.length} sélections`;
+
+  if (history.length === 0) {
+    list.innerHTML = "";
+    list.setAttribute("data-empty", t["history.empty"] || "Aucune sélection");
+    return;
+  }
+
+  list.removeAttribute("data-empty");
+  list.innerHTML = history.map((item) => {
+    const date = new Date(item.date);
+    const formattedDate = date.toLocaleDateString(currentLang === "en" ? "en-US" : currentLang === "de" ? "de-DE" : currentLang === "es" ? "es-ES" : currentLang === "pt" ? "pt-PT" : "fr-FR", {
+      day: "2-digit",
+      month: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    return `
+      <li>
+        <span class="history-name">${escapeHtml(item.name)}</span>
+        <span class="history-date">${formattedDate}</span>
+      </li>
+    `;
+  }).join("");
+}
+
+// ─── Button Setup ────────────────────────────────────────────────────────────
+
+function setupButtons() {
+  // Modal button
+  const openUpdateBtn = document.getElementById("openUpdateBtn");
+  if (openUpdateBtn) {
+    openUpdateBtn.addEventListener("click", showUpdateModal);
+  }
+
+  // Settings button
+  const settingsBtn = document.getElementById("settingsBtn");
+  if (settingsBtn) {
+    settingsBtn.addEventListener("click", showSettingsPanel);
+  }
+
+  // History button
+  const historyBtn = document.getElementById("historyBtn");
+  if (historyBtn) {
+    historyBtn.addEventListener("click", showHistoryPanel);
+  }
+
+  // Textarea keyboard shortcuts
   const textarea = document.getElementById("studentInput");
   if (textarea) {
     textarea.addEventListener("keydown", (e) => {
@@ -251,31 +530,110 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Sélecteur de langue
-  setupLangSelector();
+  // Setup settings listeners
+  setupSettingsListeners();
+}
 
-  // Fermer le dropdown si clic en dehors
-  document.addEventListener("click", (e) => {
-    const selector = document.getElementById("langSelector");
-    if (selector && !selector.contains(e.target)) {
-      closeLangDropdown();
-    }
-  });
+// ─── Panel Management ────────────────────────────────────────────────────────
 
-  // Navigation navigateur (bouton précédent/suivant)
-  window.addEventListener("popstate", () => {
-    const lang = getLangFromUrl() || DEFAULT_LANG;
-    if (lang !== currentLang) {
-      currentLang = lang;
-      applyTranslations(currentLang);
+function showUpdateModal() {
+  const modal = document.getElementById("updateModal");
+  if (modal) {
+    modal.classList.add("open");
+    modal.style.display = "flex";
+    focusFirstFocusable(modal);
+  }
+}
+
+function hideUpdateModal() {
+  const modal = document.getElementById("updateModal");
+  if (modal) {
+    modal.classList.remove("open");
+    modal.style.display = "none";
+  }
+}
+
+function showSettingsPanel() {
+  const panel = document.getElementById("settingsPanel");
+  if (panel) {
+    panel.classList.add("open");
+    focusFirstFocusable(panel);
+  }
+}
+
+function hideSettingsPanel() {
+  const panel = document.getElementById("settingsPanel");
+  if (panel) {
+    panel.classList.remove("open");
+  }
+}
+
+function showHistoryPanel() {
+  const panel = document.getElementById("historyPanel");
+  if (panel) {
+    renderHistory();
+    panel.classList.add("open");
+    focusFirstFocusable(panel);
+  }
+}
+
+function hideHistoryPanel() {
+  const panel = document.getElementById("historyPanel");
+  if (panel) {
+    panel.classList.remove("open");
+  }
+}
+
+function focusFirstFocusable(container) {
+  const focusable = container.querySelector("button, input, textarea, [tabindex]:not([tabindex='-1'])");
+  if (focusable) focusable.focus();
+}
+
+// ─── Event Handlers ───────────────────────────────────────────────────────────
+
+function handleOutsideClick(e) {
+  // Lang dropdown
+  const selector = document.getElementById("langSelector");
+  if (selector && !selector.contains(e.target)) {
+    closeLangDropdown();
+  }
+
+  // Close panels and modals on background click
+  if (e.target.id === "updateModal") {
+    hideUpdateModal();
+  }
+  if (e.target.id === "settingsPanel") {
+    hideSettingsPanel();
+  }
+  if (e.target.id === "historyPanel") {
+    hideHistoryPanel();
+  }
+
+  // Close buttons
+  if (e.target.classList.contains("close-btn")) {
+    const panel = e.target.closest(".modal, .settings-panel, .history-panel");
+    if (panel) {
+      panel.classList.remove("open");
+      if (panel.id === "updateModal") {
+        panel.style.display = "none";
+      }
     }
-  });
-});
+  }
+}
+
+function handleKeyDown(e) {
+  // Escape closes open panels
+  if (e.key === "Escape") {
+    closeLangDropdown();
+    hideUpdateModal();
+    hideSettingsPanel();
+    hideHistoryPanel();
+  }
+}
 
 // ─── Routing URL ──────────────────────────────────────────────────────────────
 
 function getLangFromUrl() {
-  // Supporte /fr/, /en/, /fr, /en, ?lang=fr
   const path = window.location.pathname;
   const match = path.match(/\/([a-z]{2})(\/|$)/i);
   if (match && SUPPORTED_LANGS.includes(match[1].toLowerCase())) {
@@ -314,10 +672,6 @@ function setupLangSelector() {
       e.stopPropagation();
       toggleLangDropdown();
     });
-    // Accessibilité clavier
-    currentBtn.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeLangDropdown();
-    });
   }
 
   document.querySelectorAll(".lang-option").forEach((btn) => {
@@ -327,7 +681,7 @@ function setupLangSelector() {
         currentLang = lang;
         updateUrl(lang, true);
         applyTranslations(lang);
-        renderStudents(); // Re-rendre avec nouvelles traductions
+        renderStudents();
       }
       closeLangDropdown();
     });
@@ -359,75 +713,53 @@ function closeLangDropdown() {
 function applyTranslations(lang) {
   const t = TRANSLATIONS[lang] || TRANSLATIONS[DEFAULT_LANG];
 
-  // Attribut lang sur <html>
   document.documentElement.lang = t.htmlLang;
 
-  // Mettre à jour le sélecteur de langue affiché
   const flagEl = document.getElementById("langFlag");
   const codeEl = document.getElementById("langCode");
   if (flagEl) flagEl.textContent = t.flag;
   if (codeEl) codeEl.textContent = t.code;
 
-  // Marquer l'option active
   document.querySelectorAll(".lang-option").forEach((btn) => {
     btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
   });
 
-  // Éléments data-i18n
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
-    if (t[key] !== undefined && typeof t[key] === "string") {
-      // Pour les éléments avec des enfants <strong>, ne remplacer que le texte du nœud si besoin
-      if (el.children.length === 0) {
-        el.textContent = t[key];
-      }
-    }
-  });
-
-  // Placeholder du textarea
-  const textarea = document.getElementById("studentInput");
-  if (textarea) textarea.placeholder = t.placeholder;
-
-  // Bouton ajouter
-  const addBtn = document.querySelector(".btn-add");
-  if (addBtn) addBtn.textContent = t.addBtn;
-
-  // Bouton effacer
-  const clearBtn = document.querySelector(".btn-clear-inline");
-  if (clearBtn) clearBtn.textContent = t.clearBtn;
-
-  // Bouton plouf
-  const ploufBtn = document.getElementById("ploufBtn");
-  if (ploufBtn) ploufBtn.textContent = t.ploufBtn;
-
-  // Subtitle
-  const subtitle = document.querySelector(".subtitle");
-  if (subtitle) subtitle.textContent = t.subtitle;
-
-  // Empty state (si présent)
-  const emptyState = document.querySelector(".empty-state");
-  if (emptyState) emptyState.textContent = t.emptyState;
-
-  // Bouton modal footer
-  const updateBtn = document.getElementById("openUpdateBtn");
-  if (updateBtn) updateBtn.textContent = t["footer.updateBtn"];
-
-  // Footer textes
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (typeof t[key] === "string" && el.children.length === 0) {
+    if (t[key] !== undefined && typeof t[key] === "string" && el.children.length === 0) {
       el.textContent = t[key];
     }
   });
 
-  // Close btn aria-label
-  const closeBtn = document.querySelector(".close-btn");
-  if (closeBtn) closeBtn.setAttribute("aria-label", t.closeAriaLabel);
+  const textarea = document.getElementById("studentInput");
+  if (textarea) textarea.placeholder = t.placeholder;
 
-  // Contenu du modal (items de liste)
+  const addBtn = document.querySelector(".btn-add");
+  if (addBtn) addBtn.textContent = t.addBtn;
+
+  const clearBtn = document.querySelector(".btn-clear-inline");
+  if (clearBtn) clearBtn.textContent = t.clearBtn;
+
+  const ploufBtn = document.getElementById("ploufBtn");
+  if (ploufBtn) ploufBtn.textContent = t.ploufBtn;
+
+  const subtitle = document.querySelector(".subtitle");
+  if (subtitle) subtitle.textContent = t.subtitle;
+
+  const emptyState = document.querySelector(".empty-state");
+  if (emptyState) emptyState.textContent = t.emptyState;
+
+  const updateBtn = document.getElementById("openUpdateBtn");
+  if (updateBtn) updateBtn.textContent = t["footer.updateBtn"];
+
+  const inputHelp = document.getElementById("inputHelp");
+  if (inputHelp) inputHelp.textContent = t.inputHelp;
+
+  // Update aria labels
+  const closeBtns = document.querySelectorAll(".close-btn");
+  closeBtns.forEach((btn) => btn.setAttribute("aria-label", t.closeAriaLabel));
+
   updateModalTranslations(t);
-
-  // Compteur d'étudiants
   updateStudentCount();
 }
 
@@ -443,26 +775,26 @@ function updateModalTranslations(t) {
 
   const items = modal.querySelectorAll(".modal-list li");
   const itemKeys = [
-    "modal.item1",
-    "modal.item2",
-    "modal.item3",
-    "modal.item4",
-    "modal.item5",
-    "modal.item6",
-    "modal.item7",
-    "modal.item8",
-    "modal.item9",
+    "modal.item1", "modal.item2", "modal.item3", "modal.item4",
+    "modal.item5", "modal.item6", "modal.item7", "modal.item8",
+    "modal.item9", "modal.item10", "modal.item11", "modal.item12",
   ];
+
   items.forEach((li, i) => {
     if (itemKeys[i]) {
       const strong = li.querySelector("strong");
       if (strong) {
         strong.textContent = t["modal.new"];
-        // Texte après le strong
         const textNode = Array.from(li.childNodes).find(
-          (n) => n.nodeType === 3,
+          (n) => n.nodeType === 3 || (n.nodeType === 1 && n.tagName === "SPAN"),
         );
-        if (textNode) textNode.textContent = " " + t[itemKeys[i]];
+        if (textNode) {
+          if (textNode.nodeType === 1) {
+            textNode.textContent = t[itemKeys[i]];
+          } else {
+            textNode.textContent = " " + t[itemKeys[i]];
+          }
+        }
       } else {
         li.textContent = t[itemKeys[i]];
       }
@@ -486,18 +818,6 @@ function updateModalTranslations(t) {
   if (thanks) thanks.textContent = t["modal.thanks"];
 }
 
-// ─── Modal ────────────────────────────────────────────────────────────────────
-
-function showUpdateModal() {
-  const modal = document.getElementById("updateModal");
-  if (modal) modal.style.display = "flex";
-}
-
-function hideUpdateModal() {
-  const modal = document.getElementById("updateModal");
-  if (modal) modal.style.display = "none";
-}
-
 // ─── Persistance ──────────────────────────────────────────────────────────────
 
 function saveStudents() {
@@ -512,7 +832,11 @@ function addStudent() {
 
   if (text === "") {
     input.classList.add("input-error");
-    setTimeout(() => input.classList.remove("input-error"), 500);
+    if (settings.animations) {
+      setTimeout(() => input.classList.remove("input-error"), 500);
+    } else {
+      input.classList.remove("input-error");
+    }
     return;
   }
 
@@ -552,7 +876,7 @@ function addStudent() {
 
 function removeStudent(index) {
   const tag = document.getElementById(`student-${index}`);
-  if (tag) {
+  if (tag && settings.animations) {
     tag.style.animation = "slideOut 0.25s ease-in forwards";
     setTimeout(() => {
       students.splice(index, 1);
@@ -601,7 +925,7 @@ function renderStudents() {
   list.innerHTML = students
     .map(
       (student, index) => `
-        <div class="student-tag" id="student-${index}">
+        <div class="student-tag" id="student-${index}" role="listitem">
             <span class="student-name">${escapeHtml(student)}</span>
             <button class="btn-remove" onclick="removeStudent(${index})" aria-label="${escapeHtml(t.removeAriaLabel(student))}">✕</button>
         </div>
@@ -639,6 +963,8 @@ function showNotification(message) {
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.textContent = message;
+  notification.setAttribute("role", "status");
+  notification.setAttribute("aria-live", "polite");
   document.body.appendChild(notification);
   setTimeout(() => notification.remove(), 3200);
 }
@@ -652,10 +978,13 @@ async function startPlouf() {
   const ploufBtn = document.getElementById("ploufBtn");
   if (ploufBtn) ploufBtn.disabled = true;
 
-  const audio = document.getElementById("selectionMusic");
-  if (audio) {
-    audio.currentTime = 0;
-    audio.play().catch(() => {});
+  // Play sound if enabled
+  if (settings.sound) {
+    const audio = document.getElementById("selectionMusic");
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+    }
   }
 
   document
@@ -664,26 +993,35 @@ async function startPlouf() {
 
   const resultSection = document.getElementById("resultSection");
   if (resultSection) {
-    resultSection.innerHTML = '<p class="winner-text loading">🎲</p>';
+    resultSection.innerHTML = '<p class="winner-text loading" aria-live="polite">🎲</p>';
   }
 
   try {
-    const cycles = 18;
-    for (let i = 0; i < cycles; i++) {
-      const randomIndex = Math.floor(Math.random() * students.length);
-      highlightStudent(randomIndex);
-      await sleep(80 + i * 12);
+    // Only animate if animations are enabled
+    if (settings.animations) {
+      const cycles = 18;
+      for (let i = 0; i < cycles; i++) {
+        const randomIndex = Math.floor(Math.random() * students.length);
+        highlightStudent(randomIndex);
+        await sleep(80 + i * 12);
+      }
     }
 
     const winnerIndex = Math.floor(Math.random() * students.length);
     const winner = students[winnerIndex];
 
-    highlightStudent(winnerIndex);
-    await sleep(600);
+    if (settings.animations) {
+      highlightStudent(winnerIndex);
+      await sleep(600);
+    }
 
-    if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
+    // Stop sound
+    if (settings.sound) {
+      const audio = document.getElementById("selectionMusic");
+      if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+      }
     }
 
     const t = TRANSLATIONS[currentLang];
@@ -694,11 +1032,17 @@ async function startPlouf() {
             `;
     }
 
+    // Add to history
+    addToHistory(winner);
+
     students.splice(winnerIndex, 1);
     saveStudents();
     renderStudents();
 
-    createConfetti();
+    // Create confetti if enabled
+    if (settings.confetti) {
+      createConfetti();
+    }
   } finally {
     setTimeout(() => {
       document
@@ -706,7 +1050,7 @@ async function startPlouf() {
         .forEach((tag) => tag.classList.remove("highlight"));
       if (ploufBtn) ploufBtn.disabled = students.length === 0;
       isAnimating = false;
-    }, 1000);
+    }, settings.animations ? 1000 : 100);
   }
 }
 
@@ -717,7 +1061,7 @@ function highlightStudent(index) {
   const tag = document.getElementById(`student-${index}`);
   if (tag) {
     tag.classList.add("highlight");
-    tag.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    tag.scrollIntoView({ behavior: settings.animations ? "smooth" : "auto", block: "nearest" });
   }
 }
 
@@ -754,8 +1098,8 @@ function createConfetti() {
     confetti.style.height = size + "px";
     confetti.style.borderRadius =
       shape === "circle" ? "50%" : shape === "rect" ? "2px" : "3px";
-    confetti.style.animationDuration = Math.random() * 2 + 2.5 + "s";
-    confetti.style.animationDelay = Math.random() * 0.8 + "s";
+    confetti.style.animationDuration = (Math.random() * 2 + 2.5) + "s";
+    confetti.style.animationDelay = (Math.random() * 0.8) + "s";
     confetti.style.opacity = "0.9";
 
     document.body.appendChild(confetti);
